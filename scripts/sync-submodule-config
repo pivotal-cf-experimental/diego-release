@@ -14,6 +14,7 @@ go install github.com/vito/gosub
     -app github.com/cloudfoundry-incubator/executor/cmd/... \
     -app github.com/cloudfoundry-incubator/file-server/cmd/... \
     -app github.com/cloudfoundry-incubator/linux-circus/... \
+    -app github.com/pivotal-cf-experimental/garden-dot-net \
     -app github.com/cloudfoundry-incubator/nsync/cmd/... \
     -app github.com/cloudfoundry-incubator/receptor/cmd/receptor \
     -app github.com/cloudfoundry-incubator/rep/cmd/... \
@@ -33,6 +34,7 @@ go install github.com/vito/gosub
   gosub list -test github.com/cloudfoundry-incubator/executor/... \
   gosub list -test github.com/cloudfoundry-incubator/file-server/... \
   gosub list -test github.com/cloudfoundry-incubator/linux-circus/... \
+  gosub list -test github.com/pivotal-cf-experimental/garden-dot-net/... \
   gosub list -test github.com/cloudfoundry-incubator/nsync/... \
   gosub list -test github.com/cloudfoundry-incubator/receptor/... \
   gosub list -test github.com/cloudfoundry-incubator/rep/... \

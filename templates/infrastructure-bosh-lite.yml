@@ -87,6 +87,9 @@ jobs:
   - name: cell_z2
     instances: 0
 
+  - name: cell_dotnet_z2
+    instances: 0
+
   - name: cc_bridge_z2
     instances: 0
 

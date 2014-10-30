@@ -1,0 +1,55 @@
+#!/bin/bash -e
+
+RUN_DIR=/var/vcap/sys/run/garden-dot-net
+LOG_DIR=/var/vcap/sys/log/garden-dot-net
+PIDFILE=$RUN_DIR/garden-dot-net.pid
+DATA_DIR=/var/vcap/data/garden-dot-net
+
+source /var/vcap/packages/pid_utils/pid_utils.sh
+
+export DROPSONDE_ORIGIN='garden-dot-net'
+
+case $1 in
+
+  start)
+    pid_guard $PIDFILE "Garden DotNet"
+
+    mkdir -p $RUN_DIR
+    mkdir -p $DATA_DIR
+    mkdir -p $LOG_DIR
+
+    <% if p("diego.garden.kernel_network_tuning_enabled") == true %>
+    # Use default local port range (higher ports are used for pooling)
+    echo 32768 61000 > /proc/sys/net/ipv4/ip_local_port_range
+    <% end %>
+
+    depot=$DATA_DIR/depot
+
+    mkdir -p $DATA_DIR/depot
+
+    echo $$ > /var/vcap/sys/run/garden-dot-net/garden-dot-net.pid
+
+    export PATH=/var/vcap/packages/shadow/sbin:$PATH
+    export PATH=/var/vcap/packages/iptables/sbin:$PATH
+
+    ## FIXME - should we use "diego.garden.??", or should we add "linux"/"dotnet" into this?
+    exec /var/vcap/packages/garden-dot-net/bin/garden-dot-net \
+      -listenNetwork=<%= p("diego.garden.listen_network") %> \
+      -listenAddr=<%= p("diego.garden.listen_address") %> \
+      -containerGraceTime=1h \
+      1>>$LOG_DIR/garden-dot-net.stdout.log \
+      2>>$LOG_DIR/garden-dot-net.stderr.log
+
+    ;;
+
+  stop)
+    kill_and_wait $PIDFILE
+
+    ;;
+
+  *)
+    echo "Usage: garden-dot-net_ctl {start|stop}"
+
+    ;;
+
+esac
