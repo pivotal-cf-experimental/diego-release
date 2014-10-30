@@ -93,6 +93,10 @@
 	path = src/github.com/cloudfoundry-incubator/garden-linux
 	url = https://github.com/cloudfoundry-incubator/garden-linux.git
 	branch = master
+[submodule "src/github.com/pivotal-cf-experimental/garden-dot-net"]
+	path = src/github.com/pivotal-cf-experimental/garden-dot-net
+	url = git@github.com:pivotal-cf-experimental/garden-dot-net.git
+	branch = master
 [submodule "src/github.com/cloudfoundry-incubator/metricz"]
 	path = src/github.com/cloudfoundry-incubator/metricz
 	url = https://github.com/cloudfoundry-incubator/metricz.git
