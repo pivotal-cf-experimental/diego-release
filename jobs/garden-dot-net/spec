@@ -25,6 +25,10 @@ properties:
     description: "Garden server listening address."
     default: /var/vcap/data/garden/garden.sock
 
+  diego.garden.tupperware_url:
+    description: "URL for the Tupperware container server."
+    default: "http://127.0.0.1:80"
+
   diego.garden.disk_quota_enabled:
     description: "Enforce disk quotas."
     default: true
