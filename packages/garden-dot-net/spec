@@ -11,6 +11,7 @@ files:
   - github.com/pivotal-cf-experimental/garden-dot-net/container/*.go # gosub
   - github.com/pivotal-cf-experimental/garden-dot-net/process/*.go # gosub
   - code.google.com/p/gogoprotobuf/proto/*.go # gosub
+  - code.google.com/p/go.net/websocket/*.go # gosub
   - github.com/bmizerany/pat/*.go # gosub
   - github.com/cloudfoundry-incubator/cf-lager/*.go # gosub
   - github.com/cloudfoundry-incubator/garden/api/*.go # gosub
