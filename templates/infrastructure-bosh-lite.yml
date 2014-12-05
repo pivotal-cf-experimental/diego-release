@@ -31,6 +31,13 @@ properties:
       listen_network: tcp
       listen_address: 0.0.0.0:7777
 
+    garden-dot-net:
+      kernel_network_tuning_enabled: false
+      disk_quota_enabled: false
+      listen_network: tcp
+      listen_address: 0.0.0.0:7777
+      stack: windows
+
     executor:
       drain_timeout: 0
       garden:
@@ -87,6 +94,8 @@ jobs:
   - name: cell_z2
     instances: 0
 
+  - name: cell_dotnet_z1
+    instances: 1
   - name: cell_dotnet_z2
     instances: 0
 
