@@ -478,3 +478,4 @@ properties:
         port: (( external_services.nats.port ))
 
     garden-linux: ~
+    garden-dot-net: ~
