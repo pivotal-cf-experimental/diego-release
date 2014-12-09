@@ -29,9 +29,11 @@ properties:
     description: "Garden server listening address."
     default: "0.0.0.0:7777"
 
+  # default: "http://35cd5c7c.ngrok.com:80/"
+  # default: "http://clinton.ny.pivotallabs.com:9292/"
   diego.garden.containerizer_url:
     description: "URL for the Windows containzer server."
-    default: "http://7f3fb5fc.ngrok.com:80/"
+    default: "http://35cd5c7c.ngrok.com:80/"
 
   diego.garden.disk_quota_enabled:
     description: "Enforce disk quotas."
