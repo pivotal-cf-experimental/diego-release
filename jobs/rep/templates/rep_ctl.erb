@@ -19,17 +19,15 @@ case $1 in
 
     exec /var/vcap/packages/rep/bin/rep \
       -etcdCluster=<%= p("diego.rep.etcd.machines").map{|addr| "\"http://#{addr}:4001\""}.join(",")%> \
-      -natsAddresses=<%= p("diego.rep.nats.machines").collect { |addr| "#{addr}:#{p("diego.rep.nats.port")}" }.join(",") %> \
-      -natsUsername=<%= p("diego.rep.nats.username") %> \
-      -natsPassword=<%= p("diego.rep.nats.password") %> \
       -debugAddr=<%= p("diego.rep.debug_addr") %> \
       -stack=<%= p("diego.rep.stack") %> \
       -executorURL=<%= p("diego.rep.executor.url") %> \
+      -auctionListenAddr=<%= p("diego.rep.auction_listen_addr") %> \
       -lrpHost=<%= spec.networks.send(properties.network_name).ip %>\
-      -executorID=<%= spec.job.name %>-<%= spec.index %> \
-      <% if_p("diego.rep.task_complete_polling_interval") do |interval| %> \
-      -taskCompletePollingInterval=<%= interval %> \
-      <% end %> \
+      -cellID=<%= spec.job.name %>-<%= spec.index %> \
+<% if_p("diego.rep.polling_interval") do |interval| %> \
+      -pollingInterval=<%= interval %> \
+<% end %> \
       2>> $LOG_DIR/rep.stderr.log \
       1> >(tee -a $LOG_DIR/rep.stdout.log | logger -t vcap.rep)
 

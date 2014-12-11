@@ -391,12 +391,6 @@ properties:
       etcd:
         machines: (( .properties.diego.etcd.machines ))
 
-      nats:
-        machines: (( external_services.nats.machines ))
-        username: (( external_services.nats.user ))
-        password: (( external_services.nats.password ))
-        port: (( external_services.nats.port ))
-
     converger:
       etcd:
         machines: (( .properties.diego.etcd.machines ))
@@ -446,11 +440,6 @@ properties:
     rep:
       etcd:
         machines: (( .properties.diego.etcd.machines ))
-      nats:
-        machines: (( external_services.nats.machines ))
-        username: (( external_services.nats.user ))
-        password: (( external_services.nats.password ))
-        port: (( external_services.nats.port ))
 
     route_emitter:
       etcd:
@@ -482,8 +471,6 @@ properties:
         port: (( external_services.nats.port ))
       min_disk_mb: ~
     tps:
-      etcd:
-        machines: (( .properties.diego.etcd.machines ))
       nats:
         machines: (( external_services.nats.machines ))
         username: (( external_services.nats.user ))
@@ -491,3 +478,4 @@ properties:
         port: (( external_services.nats.port ))
 
     garden-linux: ~
+    garden-dot-net: ~

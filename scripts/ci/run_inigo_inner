@@ -28,7 +28,7 @@ export TPS_GOPATH=${GOPATH_ROOT}
 # These components vendor their own dependencies
 export LOGGREGATOR_GOPATH=${GOPATH_ROOT}/loggregator
 export ROUTER_GOPATH=${GOPATH_ROOT}/src/github.com/cloudfoundry/gorouter/Godeps/_workspace:${GOPATH_ROOT}
-export GARDEN_LINUX_GOPATH=${GOPATH_ROOT}/src/github.com/cloudfoundry/garden-linux/Godeps/_workspace:${GOPATH_ROOT}
+export GARDEN_LINUX_GOPATH=${GOPATH_ROOT}/src/github.com/cloudfoundry-incubator/garden-linux/Godeps/_workspace:${GOPATH_ROOT}
 
 # install application dependencies
 for package in github.com/coreos/etcd github.com/apcera/gnatsd; do
@@ -87,7 +87,11 @@ if [ "$GINKGO_PARALLEL" = "true" ]; then
 fi
 
 pushd $GOPATH_ROOT/src/github.com/cloudfoundry-incubator/inigo
-  ginkgo $color_flag $nodes_flag -r -failOnPending -randomizeAllSpecs -trace -race -slowSpecThreshold=10 "$@"
+  # always attempt to run executor in parallel
+  ginkgo $color_flag -nodes=4 -r -failOnPending -randomizeAllSpecs -trace -race -slowSpecThreshold=10 "$@" executor/
+
+  # run everything but executor with normal rules
+  ginkgo $color_flag $nodes_flag -r -skipPackage=executor -failOnPending -randomizeAllSpecs -trace -race -slowSpecThreshold=10 "$@"
 popd
 
 # unmount and delete garden graph fs

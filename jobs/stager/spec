@@ -33,6 +33,7 @@ properties:
     description: 'Map of lifecycle bundles for different stacks in json format {"stack_name":"lifecycle_bundle_path"}'
     default:
       lucid64: linux-circus/linux-circus.tgz
+      windows: linux-circus/linux-circus.tgz
   diego.stager.docker_lifecycle_bundle:
     description: Lifecycle bundle for docker apps
     default: docker-circus/docker-circus.tgz
@@ -50,7 +51,7 @@ properties:
     default: http://stager.service.dc1.consul:8888
   diego.stager.diego_api_url:
     description: URL of diego API
-    default: receptor.service.dc1.consul:8888
+    default: http://receptor.service.dc1.consul:8888
   diego.stager.debug_addr:
     description: "address at which to serve debug info"
     default: "0.0.0.0:17011"

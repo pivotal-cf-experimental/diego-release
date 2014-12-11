@@ -9,6 +9,10 @@ packages:
   - executor
 
 properties:
+  diego.ssl.skip_cert_verify:
+    description: "when connecting over https, ignore bad ssl certificates"
+    default: false
+
   loggregator_endpoint.host:
     description: "The host used to emit messages to the Loggregator"
     default: 127.0.0.1
@@ -48,3 +52,9 @@ properties:
   diego.executor.garden.network:
     description: "Network type for the garden server connection (tcp or unix)."
     default: unix
+  diego.executor.allow_privileged:
+    description: "Allow creation of privileged containers."
+    default: false
+  diego.executor.export_network_env_vars:
+    description: "Export network environment variables into container (e.g. CF_INSTANCE_IP, CF_INSTANCE_PORT)."
+    default: false
