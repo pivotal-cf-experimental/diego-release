@@ -10,6 +10,7 @@ packages:
   - file_server
   - linux-circus
   - docker-circus
+  - windows-circus
 
 properties:
   diego.ssl.skip_cert_verify:

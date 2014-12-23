@@ -241,3 +241,6 @@
 [submodule "src/github.com/hydrogen18/stoppableListener"]
 	path = src/github.com/hydrogen18/stoppableListener
 	url = https://github.com/hydrogen18/stoppableListener.git
+[submodule "src/github.com/pivotal-cf-experimental/windows-circus"]
+	path = src/github.com/pivotal-cf-experimental/windows-circus
+	url = https://github.com/pivotal-cf-experimental/windows-circus
