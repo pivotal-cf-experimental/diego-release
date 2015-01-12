@@ -149,6 +149,7 @@ as you switch in and out of the directory.
 
         go get github.com/cloudfoundry-incubator/spiff
 
+(**NOTE**: script update_bosh_lite_dotnet.sh in root directory runs the rest of the steps)
 1. Generate a deployment stub with the BOSH director UUID
 
         mkdir -p ~/deployments/bosh-lite
