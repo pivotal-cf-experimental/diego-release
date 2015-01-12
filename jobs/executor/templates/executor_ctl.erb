@@ -33,14 +33,13 @@ case $1 in
       -containerInodeLimit=<%= p("diego.executor.container_inode_limit") %> \
       -containerMaxCpuShares=<%= p("diego.executor.container_max_cpu_shares") %> \
       -tempDir=$TMP_DIR \
-<% if_p("loggregator_endpoint.host", "loggregator_endpoint.port") do |host, port| %> \
-      -loggregatorServer=<%= host %>:<%= port %> \
-<% end %> \
-      -loggregatorSecret=<%= p("loggregator_endpoint.shared_secret") %> \
       -cachePath=<%= p("diego.executor.cache_path") %>\
       -maxCacheSizeInBytes=<%= p("diego.executor.max_cache_size_in_bytes") %>\
       -allowPrivileged=<%= p("diego.executor.allow_privileged") %>\
       -exportNetworkEnvVars=<%= p("diego.executor.export_network_env_vars") %>\
+      -drainTimeout=<%= "#{p("diego.executor.drain_timeout")}s" %> \
+      -healthyMonitoringInterval=<%= "#{p("diego.executor.healthy_monitoring_interval")}s" %> \
+      -unhealthyMonitoringInterval=<%= "#{p("diego.executor.unhealthy_monitoring_interval")}s" %> \
       2>> $LOG_DIR/executor.stderr.log \
       1> >(tee -a $LOG_DIR/executor.stdout.log | logger -t vcap.executor)
 

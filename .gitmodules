@@ -56,10 +56,6 @@
 	path = src/github.com/cloudfoundry-incubator/stager
 	url = https://github.com/cloudfoundry-incubator/stager.git
 	branch = master
-[submodule "src/github.com/cloudfoundry-incubator/delta_force"]
-	path = src/github.com/cloudfoundry-incubator/delta_force
-	url = https://github.com/cloudfoundry-incubator/delta_force.git
-	branch = master
 [submodule "src/github.com/cloudfoundry-incubator/garden"]
 	path = src/github.com/cloudfoundry-incubator/garden
 	url = https://github.com/cloudfoundry-incubator/garden.git
@@ -170,6 +166,7 @@
 [submodule "src/github.com/pivotal-golang/bytefmt"]
 	path = src/github.com/pivotal-golang/bytefmt
 	url = https://github.com/pivotal-golang/bytefmt.git
+	branch = master
 [submodule "src/code.google.com/p/gogoprotobuf"]
 	path = src/code.google.com/p/gogoprotobuf
 	url = https://code.google.com/p/gogoprotobuf
@@ -226,17 +223,21 @@
 	path = src/github.com/Sirupsen/logrus
 	url = https://github.com/Sirupsen/logrus
 	branch = master
-[submodule "src/github.com/golang/protobuf"]
-	path = src/github.com/golang/protobuf
-	url = https://github.com/golang/protobuf.git
-	branch = master
-[submodule "src/github.com/cloudfoundry/loggregatorlib"]
-	path = src/github.com/cloudfoundry/loggregatorlib
-	url = https://github.com/cloudfoundry/loggregatorlib
-	branch = master
 [submodule "src/github.com/pivotal-golang/localip"]
 	path = src/github.com/pivotal-golang/localip
 	url = https://github.com/pivotal-golang/localip
+	branch = master
+[submodule "src/github.com/golang/protobuf"]
+	path = src/github.com/golang/protobuf
+	url = https://github.com/golang/protobuf
+	branch = master
+[submodule "src/github.com/gogo/protobuf"]
+	path = src/github.com/gogo/protobuf
+	url = https://github.com/gogo/protobuf
+	branch = master
+[submodule "src/github.com/pivotal-golang/operationq"]
+	path = src/github.com/pivotal-golang/operationq
+	url = https://github.com/pivotal-golang/operationq
 	branch = master
 [submodule "src/github.com/hydrogen18/stoppableListener"]
 	path = src/github.com/hydrogen18/stoppableListener

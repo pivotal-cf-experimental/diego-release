@@ -23,11 +23,9 @@ case $1 in
       -stack=<%= p("diego.rep.stack") %> \
       -executorURL=<%= p("diego.rep.executor.url") %> \
       -listenAddr=<%= p("diego.rep.listen_addr") %> \
-      -lrpHost="54.86.31.7" \
       -cellID=<%= spec.job.name %>-<%= spec.index %> \
-<% if_p("diego.rep.polling_interval") do |interval| %> \
-      -pollingInterval=<%= interval %> \
-<% end %> \
+      -zone=<%= p("rep.zone") %> \
+      -pollingInterval=<%= "#{p("diego.rep.polling_interval")}s" %> \
       2>> $LOG_DIR/rep.stderr.log \
       1> >(tee -a $LOG_DIR/rep.stdout.log | logger -t vcap.rep)
 

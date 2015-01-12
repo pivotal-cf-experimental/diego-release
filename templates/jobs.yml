@@ -27,7 +27,8 @@ jobs:
       consul:
         agent:
           mode: server
-          servers: {lan: (( .properties.diego.consul_server.machines ))}
+          servers:
+            lan: (( .properties.diego.consul_server.machines ))
 
   - name: consul_z2
     release: diego
@@ -45,7 +46,8 @@ jobs:
       consul:
         agent:
           mode: server
-          servers: {lan: (( .properties.diego.consul_server.machines ))}
+          servers:
+            lan: (( .properties.diego.consul_server.machines ))
 
   - name: consul_z3
     release: diego
@@ -63,7 +65,8 @@ jobs:
       consul:
         agent:
           mode: server
-          servers: {lan: (( .properties.diego.consul_server.machines ))}
+          servers:
+            lan: (( .properties.diego.consul_server.machines ))
 
   - name: brain_z1
     release: diego
@@ -88,7 +91,8 @@ jobs:
         zone: z1
       consul:
         agent:
-          servers: {lan: (( .properties.diego.consul_server.machines ))}
+          servers:
+            lan: (( .properties.diego.consul_server.machines ))
 
   - name: brain_z2
     release: diego
@@ -113,7 +117,8 @@ jobs:
         zone: z2
       consul:
         agent:
-          servers: {lan: (( .properties.diego.consul_server.machines ))}
+          servers:
+            lan: (( .properties.diego.consul_server.machines ))
 
   - name: cell_z1
     release: diego
@@ -130,17 +135,22 @@ jobs:
     networks:
       - name: diego1
     properties:
-      network_name: diego1
-      networks:
-        apps: diego1
+      consul:
+        agent:
+          services:
+            - receptor
+          servers:
+            lan: (( .properties.diego.consul_server.machines ))
       loggregator_endpoint:
         shared_secret: (( external_services.loggregator_endpoint.z1.shared_secret ))
       metron_agent:
-        zone: z1
-      consul:
-        agent:
-          services: [receptor]
-          servers: {lan: (( .properties.diego.consul_server.machines ))}
+        zone: (( properties.zone ))
+      network_name: diego1
+      networks:
+        apps: diego1
+      rep:
+        zone: (( properties.zone ))
+      zone: z1
 
   - name: cell_z2
     release: diego
@@ -157,17 +167,22 @@ jobs:
     networks:
       - name: diego2
     properties:
-      network_name: diego2
-      networks:
-        apps: diego2
+      consul:
+        agent:
+          services:
+            - receptor
+          servers:
+            lan: (( .properties.diego.consul_server.machines ))
       loggregator_endpoint:
         shared_secret: (( external_services.loggregator_endpoint.z2.shared_secret ))
       metron_agent:
-        zone: z2
-      consul:
-        agent:
-          services: [receptor]
-          servers: {lan: (( .properties.diego.consul_server.machines ))}
+        zone: (( properties.zone ))
+      network_name: diego2
+      networks:
+        apps: diego2
+      rep:
+        zone: (( properties.zone ))
+      zone: z2
 
   - name: cell_dotnet_z1
     release: diego
@@ -310,7 +325,8 @@ jobs:
       consul:
         agent:
           services: [file_server]
-          servers: {lan: (( .properties.diego.consul_server.machines ))}
+          servers:
+            lan: (( .properties.diego.consul_server.machines ))
 
   - name: file_server_z2
     release: diego
@@ -333,7 +349,8 @@ jobs:
       consul:
         agent:
           services: [file_server]
-          servers: {lan: (( .properties.diego.consul_server.machines ))}
+          servers:
+            lan: (( .properties.diego.consul_server.machines ))
 
   - name: cc_bridge_z1
     release: diego
@@ -358,8 +375,10 @@ jobs:
         zone: z1
       consul:
         agent:
-          services: [stager]
-          servers: {lan: (( .properties.diego.consul_server.machines ))}
+          services:
+            - stager
+          servers:
+            lan: (( .properties.diego.consul_server.machines ))
 
   - name: cc_bridge_z2
     release: diego
@@ -385,8 +404,10 @@ jobs:
         zone: z2
       consul:
         agent:
-          services: [stager]
-          servers: {lan: (( .properties.diego.consul_server.machines ))}
+          services:
+            - stager
+          servers:
+            lan: (( .properties.diego.consul_server.machines ))
 
   - name: route_emitter_z1
     release: diego
@@ -436,6 +457,8 @@ jobs:
         static_ips: (( merge ))
     properties:
       network_name: diego1
+      etcd_metrics_server:
+        job_name: (( .properties.diego.etcd_metrics_server.job_name "-z1" ))
     update:
       serial: true
 
@@ -451,6 +474,8 @@ jobs:
         static_ips: (( merge ))
     properties:
       network_name: diego2
+      etcd_metrics_server:
+        job_name: (( .properties.diego.etcd_metrics_server.job_name "-z2" ))
     update:
       serial: true
 
@@ -466,6 +491,8 @@ jobs:
         static_ips: (( merge ))
     properties:
       network_name: diego3
+      etcd_metrics_server:
+        job_name: (( .properties.diego.etcd_metrics_server.job_name "-z3" ))
     update:
       serial: true
 
