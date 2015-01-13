@@ -6,20 +6,21 @@ dependencies:
 
 files:
   - github.com/pivotal-cf-experimental/garden-dot-net/**/*
+  - github.com/gogo/protobuf/proto/*.go
   - github.com/pivotal-cf-experimental/garden-dot-net/*.go # gosub
   - github.com/pivotal-cf-experimental/garden-dot-net/backend/*.go # gosub
   - github.com/pivotal-cf-experimental/garden-dot-net/container/*.go # gosub
   - github.com/pivotal-cf-experimental/garden-dot-net/process/*.go # gosub
   - code.google.com/p/go.net/websocket/*.go # gosub
-  - code.google.com/p/gogoprotobuf/proto/*.go # gosub
   - github.com/bmizerany/pat/*.go # gosub
   - github.com/cloudfoundry-incubator/cf-lager/*.go # gosub
-  - github.com/cloudfoundry-incubator/garden/api/*.go # gosub
+  - github.com/cloudfoundry-incubator/garden/*.go # gosub
   - github.com/cloudfoundry-incubator/garden/protocol/*.go # gosub
   - github.com/cloudfoundry-incubator/garden/routes/*.go # gosub
   - github.com/cloudfoundry-incubator/garden/server/*.go # gosub
   - github.com/cloudfoundry-incubator/garden/server/bomberman/*.go # gosub
   - github.com/cloudfoundry-incubator/garden/server/timebomb/*.go # gosub
   - github.com/cloudfoundry-incubator/garden/transport/*.go # gosub
+  - github.com/gogo/protobuf/proto/*.go # gosub
   - github.com/pivotal-golang/lager/*.go # gosub
   - github.com/tedsuo/rata/*.go # gosub
