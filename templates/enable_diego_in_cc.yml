@@ -1,7 +1,130 @@
 ---
+name: cf
+director_uuid: (( merge ))
+terraform_settings: (( merge ))
+
+networks:
+- name: cf1
+  subnets:
+  - cloud_properties:
+      security_groups:
+      - (( terraform_settings.cf_sg ))
+      subnet: (( terraform_settings.cf_subnet_1 ))
+    dns:
+    - 10.60.3.2
+    gateway: 10.60.3.1
+    name: default_unused
+    range: 10.60.3.0/24
+    reserved:
+    - 10.60.3.2 - 10.60.3.9
+    static:
+    - 10.60.3.10 - 10.60.3.100
+  type: manual
+- name: cf2
+  subnets:
+  - cloud_properties:
+      security_groups:
+      - (( terraform_settings.cf_sg ))
+      subnet: (( terraform_settings.cf_subnet_2 ))
+    dns:
+    - 10.60.4.2
+    gateway: 10.60.4.1
+    name: default_unused
+    range: 10.60.4.0/24
+    reserved:
+    - 10.60.4.2 - 10.60.4.9
+    static:
+    - 10.60.4.10 - 10.60.4.100
+  type: manual
+- name: cf3
+  subnets:
+  - cloud_properties:
+      security_groups:
+      - (( terraform_settings.cf_sg ))
+      subnet: (( terraform_settings.cf_subnet_3 ))
+    dns:
+    - 10.60.5.2
+    gateway: 10.60.5.1
+    name: default_unused
+    range: 10.60.5.0/24
+    reserved:
+    - 10.60.5.2 - 10.60.5.9
+    static:
+    - 10.60.5.10 - 10.60.5.100
+  type: manual
+
+
 properties:
-  cc:
-    diego:
+  domain: dotnet2.cf-apps.io
+  loggregator_endpoint:
+    shared_secret: loggregator-secret
+  uaa:
+    scim:
+      users: ["idk"]
+    cc:
+      diego:
         staging: optional
         running: optional
-    diego_docker: true
+      diego_docker: true
+      client_secret: client_secret
+    clients:
+      support-services:
+        secret: secret
+      app-direct:
+        secret: secret
+      developer_console:
+        secret: secret
+      doppler:
+        secret: secret
+      login:
+        secret: secret
+      notifications:
+        secret: secret
+      servicesmgmt:
+        secret: secret
+      space-mail:
+        secret: secret
+    jwt:
+      signing_key: signing_key
+      verification_key: verification_key
+    admin:
+      client_secret: client_secret
+    batch:
+      password: password
+      username: username
+  cc:
+    bulk_api_password: bulk_api_password
+    staging_upload_password: staging_upload_password
+    staging_upload_user: staging_upload_user
+    db_encryption_key: db_encryption_key
+    internal_api_password: internal_api_password
+
+  dea_next:
+    memory_mb: 1024
+    disk_mb: 1024
+  router:
+    status:
+      user: user
+      password: password
+  etcd_metrics_server:
+    nats:
+      username: username
+      password: password
+  ccdb: ccdb
+  uaadb: uaadb
+  nats:
+    user: username
+    password: password
+
+  template_only:
+    aws:
+      secret_access_key: (( terraform_settings.aws_access_key ))
+      access_key_id: (( terraform_settings.aws_key_id ))
+      availability_zone: (( terraform_settings.cf_subnet_1_az ))
+      availability_zone2: (( terraform_settings.cf_subnet_2_az ))
+
+meta:
+  zones:
+    z1: (( terraform_settings.cf_subnet_1_az ))
+    z2: (( terraform_settings.cf_subnet_2_az ))
+    z3: (( terraform_settings.cf_subnet_3_az ))
