@@ -37,7 +37,7 @@ case $1 in
       -listenNetwork=<%= p("diego.garden.listen_network") %> \
       -listenAddr=<%= p("diego.garden.listen_address") %> \
       -containerGraceTime=1h \
-      -containerizerURL=<%= p("diego.garden.containerizer_url") %>
+      -containerizerURL=<%= p("diego.garden.containerizer_url") %> \
       1>>$LOG_DIR/garden-dot-net.stdout.log \
       2>>$LOG_DIR/garden-dot-net.stderr.log
 
