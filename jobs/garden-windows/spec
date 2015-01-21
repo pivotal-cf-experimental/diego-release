@@ -1,13 +1,13 @@
 ---
-name: garden-dot-net
+name: garden-windows
 
 templates:
-  garden-dot-net_ctl.erb: bin/garden-dot-net_ctl
+  garden-windows_ctl.erb: bin/garden-windows_ctl
 
 packages:
   - pid_utils
   - iptables
-  - garden-dot-net
+  - garden-windows
   - rootfs_lucid64
   - shadow
 
@@ -16,7 +16,7 @@ properties:
     description: "the stack for which to handle requests"
     default: "windows"
 
-  ## FIXME - should we use "diego.garden.???" or a specific one for dotnet
+  ## FIXME - should we use "diego.garden.???" or a specific one for windows
   diego.garden.kernel_network_tuning_enabled:
     description: "enable or disable kernel network tuning; disable for Garden CPI"
     default: true

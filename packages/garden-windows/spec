@@ -1,16 +1,16 @@
 ---
-name: garden-dot-net
+name: garden-windows
 
 dependencies:
   - golang
 
 files:
-  - github.com/pivotal-cf-experimental/garden-dot-net/**/*
+  - github.com/pivotal-cf-experimental/garden-windows/**/*
   - github.com/gogo/protobuf/proto/*.go
-  - github.com/pivotal-cf-experimental/garden-dot-net/*.go # gosub
-  - github.com/pivotal-cf-experimental/garden-dot-net/backend/*.go # gosub
-  - github.com/pivotal-cf-experimental/garden-dot-net/container/*.go # gosub
-  - github.com/pivotal-cf-experimental/garden-dot-net/process/*.go # gosub
+  - github.com/pivotal-cf-experimental/garden-windows/*.go # gosub
+  - github.com/pivotal-cf-experimental/garden-windows/backend/*.go # gosub
+  - github.com/pivotal-cf-experimental/garden-windows/container/*.go # gosub
+  - github.com/pivotal-cf-experimental/garden-windows/process/*.go # gosub
   - code.google.com/p/go.net/websocket/*.go # gosub
   - github.com/bmizerany/pat/*.go # gosub
   - github.com/cloudfoundry-incubator/cf-lager/*.go # gosub

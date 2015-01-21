@@ -1,18 +1,18 @@
 #!/bin/bash -e
 
-RUN_DIR=/var/vcap/sys/run/garden-dot-net
-LOG_DIR=/var/vcap/sys/log/garden-dot-net
-PIDFILE=$RUN_DIR/garden-dot-net.pid
-DATA_DIR=/var/vcap/data/garden-dot-net
+RUN_DIR=/var/vcap/sys/run/garden-windows
+LOG_DIR=/var/vcap/sys/log/garden-windows
+PIDFILE=$RUN_DIR/garden-windows.pid
+DATA_DIR=/var/vcap/data/garden-windows
 
 source /var/vcap/packages/pid_utils/pid_utils.sh
 
-export DROPSONDE_ORIGIN='garden-dot-net'
+export DROPSONDE_ORIGIN='garden-windows'
 
 case $1 in
 
   start)
-    pid_guard $PIDFILE "Garden DotNet"
+    pid_guard $PIDFILE "Garden Windows"
 
     mkdir -p $RUN_DIR
     mkdir -p $DATA_DIR
@@ -27,19 +27,19 @@ case $1 in
 
     mkdir -p $DATA_DIR/depot
 
-    echo $$ > /var/vcap/sys/run/garden-dot-net/garden-dot-net.pid
+    echo $$ > /var/vcap/sys/run/garden-windows/garden-windows.pid
 
     export PATH=/var/vcap/packages/shadow/sbin:$PATH
     export PATH=/var/vcap/packages/iptables/sbin:$PATH
 
-    ## FIXME - should we use "diego.garden.??", or should we add "linux"/"dotnet" into this?
-    exec /var/vcap/packages/garden-dot-net/bin/garden-dot-net \
+    ## FIXME - should we use "diego.garden.??", or should we add "linux"/"windows" into this?
+    exec /var/vcap/packages/garden-windows/bin/garden-windows \
       -listenNetwork=<%= p("diego.garden.listen_network") %> \
       -listenAddr=<%= p("diego.garden.listen_address") %> \
       -containerGraceTime=1h \
       -containerizerURL=<%= p("diego.garden.containerizer_url") %> \
-      1>>$LOG_DIR/garden-dot-net.stdout.log \
-      2>>$LOG_DIR/garden-dot-net.stderr.log
+      1>>$LOG_DIR/garden-windows.stdout.log \
+      2>>$LOG_DIR/garden-windows.stderr.log
 
     ;;
 
@@ -49,7 +49,7 @@ case $1 in
     ;;
 
   *)
-    echo "Usage: garden-dot-net_ctl {start|stop}"
+    echo "Usage: garden-windows_ctl {start|stop}"
 
     ;;
 

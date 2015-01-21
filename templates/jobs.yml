@@ -184,14 +184,14 @@ jobs:
         zone: (( properties.zone ))
       zone: z2
 
-  - name: cell_dotnet_z1
+  - name: cell_windows_z1
     release: diego
     templates:
       - name: executor
       - name: converger
       - name: rep
       - name: auctioneer
-      - name: garden-dot-net
+      - name: garden-windows
       - name: runtime_metrics_server
       - name: receptor
       - name: consul-agent
@@ -214,14 +214,14 @@ jobs:
           services: [receptor]
           servers: {lan: (( .properties.diego.consul_server.machines ))}
 
-  - name: cell_dotnet_z2
+  - name: cell_windows_z2
     release: diego
     templates:
       - name: executor
       - name: converger
       - name: rep
       - name: auctioneer
-      - name: garden-dot-net
+      - name: garden-windows
       - name: runtime_metrics_server
       - name: receptor
       - name: consul-agent
@@ -244,14 +244,14 @@ jobs:
           services: [receptor]
           servers: {lan: (( .properties.diego.consul_server.machines ))}
 
-  - name: cell_dotnet_z1
+  - name: cell_windows_z1
     release: diego
     templates:
       - name: executor
       - name: converger
       - name: rep
       - name: auctioneer
-      - name: garden-dot-net
+      - name: garden-windows
       - name: runtime_metrics_server
       - name: receptor
       - name: consul-agent
@@ -274,14 +274,14 @@ jobs:
           services: [receptor]
           servers: {lan: (( .properties.diego.consul_server.machines ))}
 
-  - name: cell_dotnet_z2
+  - name: cell_windows_z2
     release: diego
     templates:
       - name: executor
       - name: converger
       - name: rep
       - name: auctioneer
-      - name: garden-dot-net
+      - name: garden-windows
       - name: runtime_metrics_server
       - name: receptor
       - name: consul-agent
@@ -617,4 +617,4 @@ properties:
         port: (( external_services.nats.port ))
 
     garden-linux: ~
-    garden-dot-net: ~
+    garden-windows: ~
