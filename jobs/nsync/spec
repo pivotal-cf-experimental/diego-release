@@ -21,6 +21,7 @@ properties:
     description: 'Map of lifecycle bundles for different stacks in json format {"stack_name":"lifecycle_bundle_path"}'
     default:
       lucid64: linux-circus/linux-circus.tgz
+      windows: windows-circus/windows-circus.tgz
   diego.nsync.docker_lifecycle_bundle:
     description: Lifecycle bundle for docker apps
     default: docker-circus/docker-circus.tgz
