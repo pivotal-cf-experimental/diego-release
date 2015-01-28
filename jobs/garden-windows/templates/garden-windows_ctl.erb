@@ -1,0 +1,56 @@
+#!/bin/bash -e
+
+RUN_DIR=/var/vcap/sys/run/garden-windows
+LOG_DIR=/var/vcap/sys/log/garden-windows
+PIDFILE=$RUN_DIR/garden-windows.pid
+DATA_DIR=/var/vcap/data/garden-windows
+
+source /var/vcap/packages/pid_utils/pid_utils.sh
+
+export DROPSONDE_ORIGIN='garden-windows'
+
+case $1 in
+
+  start)
+    pid_guard $PIDFILE "Garden Windows"
+
+    mkdir -p $RUN_DIR
+    mkdir -p $DATA_DIR
+    mkdir -p $LOG_DIR
+
+    <% if p("diego.garden.kernel_network_tuning_enabled") == true %>
+    # Use default local port range (higher ports are used for pooling)
+    echo 32768 61000 > /proc/sys/net/ipv4/ip_local_port_range
+    <% end %>
+
+    depot=$DATA_DIR/depot
+
+    mkdir -p $DATA_DIR/depot
+
+    echo $$ > /var/vcap/sys/run/garden-windows/garden-windows.pid
+
+    export PATH=/var/vcap/packages/shadow/sbin:$PATH
+    export PATH=/var/vcap/packages/iptables/sbin:$PATH
+
+    ## FIXME - should we use "diego.garden.??", or should we add "linux"/"windows" into this?
+    exec /var/vcap/packages/garden-windows/bin/garden-windows \
+      -listenNetwork=<%= p("diego.garden.listen_network") %> \
+      -listenAddr=<%= p("diego.garden.listen_address") %> \
+      -containerGraceTime=1h \
+      -containerizerURL=<%= p("diego.garden.containerizer_url") %> \
+      1>>$LOG_DIR/garden-windows.stdout.log \
+      2>>$LOG_DIR/garden-windows.stderr.log
+
+    ;;
+
+  stop)
+    kill_and_wait $PIDFILE
+
+    ;;
+
+  *)
+    echo "Usage: garden-windows_ctl {start|stop}"
+
+    ;;
+
+esac

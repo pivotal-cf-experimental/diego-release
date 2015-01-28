@@ -184,6 +184,66 @@ jobs:
         zone: (( properties.zone ))
       zone: z2
 
+  - name: cell_windows_z1
+    release: diego
+    templates:
+      - name: executor
+      - name: converger
+      - name: rep
+      - name: auctioneer
+      - name: garden-windows
+      - name: runtime_metrics_server
+      - name: receptor
+      - name: consul-agent
+      - name: metron_agent
+        release: cf
+    instances: 0
+    resource_pool: large_z1
+    networks:
+      - name: diego1
+    properties:
+      network_name: diego1
+      networks:
+        apps: diego1
+      loggregator_endpoint:
+        shared_secret: (( external_services.loggregator_endpoint.z1.shared_secret ))
+      metron_agent:
+        zone: z1
+      consul:
+        agent:
+          services: [receptor]
+          servers: {lan: (( .properties.diego.consul_server.machines ))}
+
+  - name: cell_windows_z2
+    release: diego
+    templates:
+      - name: executor
+      - name: converger
+      - name: rep
+      - name: auctioneer
+      - name: garden-windows
+      - name: runtime_metrics_server
+      - name: receptor
+      - name: consul-agent
+      - name: metron_agent
+        release: cf
+    instances: 0
+    resource_pool: large_z2
+    networks:
+      - name: diego2
+    properties:
+      network_name: diego2
+      networks:
+        apps: diego2
+      loggregator_endpoint:
+        shared_secret: (( external_services.loggregator_endpoint.z2.shared_secret ))
+      metron_agent:
+        zone: z2
+      consul:
+        agent:
+          services: [receptor]
+          servers: {lan: (( .properties.diego.consul_server.machines ))}
+
   - name: cc_bridge_z1
     release: diego
     templates:
@@ -460,3 +520,4 @@ properties:
         port: (( external_services.nats.port ))
 
     garden-linux: ~
+    garden-windows: ~

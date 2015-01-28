@@ -1,0 +1,52 @@
+---
+name: garden-windows
+
+templates:
+  garden-windows_ctl.erb: bin/garden-windows_ctl
+
+packages:
+  - pid_utils
+  - iptables
+  - garden-windows
+  - rootfs_lucid64
+  - shadow
+
+properties:
+  diego.rep.stack:
+    description: "the stack for which to handle requests"
+    default: "windows"
+
+  ## FIXME - should we use "diego.garden.???" or a specific one for windows
+  diego.garden.kernel_network_tuning_enabled:
+    description: "enable or disable kernel network tuning; disable for Garden CPI"
+    default: true
+
+  diego.garden.listen_network:
+    description: "Garden server connection mode (tcp or unix)."
+    default: tcp
+
+  diego.garden.listen_address:
+    description: "Garden server listening address."
+    default: "0.0.0.0:7777"
+
+  # default: "http://35cd5c7c.ngrok.com:80/"
+  # default: "http://clinton.ny.pivotallabs.com:9292/"
+  diego.garden.containerizer_url:
+    description: "URL for the Windows containerizer server."
+    default: "http://10.0.0.108:80/"
+
+  diego.garden.disk_quota_enabled:
+    description: "Enforce disk quotas."
+    default: true
+
+  diego.garden.deny_networks:
+    description: "List of CIDR blocks to which containers will be denied access."
+    default: []
+
+  diego.garden.allow_networks:
+    description: "List of CIDR blocks to which containers will be allowed access (applied after deny)."
+    default: []
+
+  diego.garden.debug_addr:
+    description: "address at which to serve debug info"
+    default: "0.0.0.0:17013"

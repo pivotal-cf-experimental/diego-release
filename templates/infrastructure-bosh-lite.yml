@@ -33,6 +33,13 @@ properties:
       deny_networks:
         - 0.0.0.0/0
 
+    garden-windows:
+      kernel_network_tuning_enabled: false
+      disk_quota_enabled: false
+      listen_network: tcp
+      listen_address: 0.0.0.0:7777
+      stack: windows
+
     executor:
       drain_timeout: 0
       garden:
@@ -87,6 +94,11 @@ jobs:
     instances: 0
 
   - name: cell_z2
+    instances: 0
+
+  - name: cell_windows_z1
+    instances: 1
+  - name: cell_windows_z2
     instances: 0
 
   - name: cc_bridge_z2
