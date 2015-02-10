@@ -72,6 +72,10 @@
 	path = src/github.com/cloudfoundry-incubator/garden-linux
 	url = https://github.com/cloudfoundry-incubator/garden-linux.git
 	branch = master
+[submodule "src/github.com/pivotal-cf-experimental/garden-dot-net"]
+	path = src/github.com/pivotal-cf-experimental/garden-dot-net
+	url = https://github.com/pivotal-cf-experimental/garden-dot-net.git
+	branch = master
 [submodule "src/github.com/cloudfoundry-incubator/metricz"]
 	path = src/github.com/cloudfoundry-incubator/metricz
 	url = https://github.com/cloudfoundry-incubator/metricz.git
@@ -221,3 +225,12 @@
 	path = src/github.com/cloudfoundry-incubator/docker_app_lifecycle
 	url = https://github.com/cloudfoundry-incubator/docker_app_lifecycle
 	branch = master
+[submodule "src/github.com/hydrogen18/stoppableListener"]
+	path = src/github.com/hydrogen18/stoppableListener
+	url = https://github.com/hydrogen18/stoppableListener.git
+[submodule "src/github.com/pivotal-cf-experimental/windows-circus"]
+	path = src/github.com/pivotal-cf-experimental/windows-circus
+	url = git@github.com:pivotal-cf-experimental/windows-circus.git
+[submodule "src/github.com/pivotal-cf-experimental/garden-windows"]
+	path = src/github.com/pivotal-cf-experimental/garden-windows
+	url = git@github.com:pivotal-cf-experimental/garden-windows.git
