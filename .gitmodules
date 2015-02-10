@@ -225,19 +225,14 @@
 	path = src/github.com/cloudfoundry-incubator/docker_app_lifecycle
 	url = https://github.com/cloudfoundry-incubator/docker_app_lifecycle
 	branch = master
-[submodule "src/github.com/gorilla/mux"]
-	path = src/github.com/gorilla/mux
-	url = https://github.com/gorilla/mux
-[submodule "src/github.com/gorilla/context"]
-	path = src/github.com/gorilla/context
-	url = https://github.com/gorilla/context
 [submodule "src/github.com/pivotal-cf-experimental/garden-windows"]
 	path = src/github.com/pivotal-cf-experimental/garden-windows
 	url = git@github.com:pivotal-cf-experimental/garden-windows.git
 	branch = master
-[submodule "src/github.com/gogo/protobuf"]
-	path = src/github.com/gogo/protobuf
-	url = https://github.com/gogo/protobuf
+[submodule "src/github.com/pivotal-cf-experimental/windows-circus"]
+	path = src/github.com/pivotal-cf-experimental/windows-circus
+	url = git@github.com:pivotal-cf-experimental/windows-circus.git
+	branch = master
 [submodule "src/github.com/hydrogen18/stoppableListener"]
 	path = src/github.com/hydrogen18/stoppableListener
 	url = https://github.com/hydrogen18/stoppableListener.git
