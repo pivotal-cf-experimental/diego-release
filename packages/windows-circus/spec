@@ -1,0 +1,5 @@
+---
+name: windows-circus
+
+files:
+  - github.com/pivotal-cf-experimental/windows-circus/windows-circus.tgz

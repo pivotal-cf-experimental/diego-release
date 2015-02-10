@@ -1,0 +1,16 @@
+check process garden-windows
+  with pidfile /var/vcap/sys/run/garden-windows/garden-windows.pid
+  start program "/var/vcap/jobs/garden-windows/bin/garden-windows_ctl start"
+  stop program "/var/vcap/jobs/garden-windows/bin/garden-windows_ctl stop"
+<% if p("diego.garden.listen_network") == "unix" %>
+  ## FIXME - should we use "diego.garden.???" or a specific one for dotnet
+  if failed unixsocket <%= p("diego.garden.listen_address") %>
+    with timeout 5 seconds for 5 cycles
+    then restart
+<% elsif p("diego.garden.listen_network") == "tcp" %>
+  ## FIXME - should we use "diego.garden.???" or a specific one for dotnet
+  if failed host 127.0.0.1 port <%= p("diego.garden.listen_address").split(":").last %>
+    with timeout 5 seconds for 5 cycles
+    then restart
+<% end %>
+  group vcap

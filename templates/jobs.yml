@@ -184,6 +184,83 @@ jobs:
         zone: (( properties.zone ))
       zone: z2
 
+
+  - name: cell_windows_z1
+    release: diego
+    templates:
+      - name: consul-agent
+      - name: executor
+      - name: garden-windows
+      - name: receptor
+      - name: rep
+      - name: metron_agent
+        release: cf
+    instances: 0
+    resource_pool: large_z1
+    networks:
+      - name: diego1
+    properties:
+      diego:
+        rep:
+          stack: windows
+        executor:
+          garden:
+            address: "/var/vcap/data/garden-windows/garden-windows.sock"
+      consul:
+        agent:
+          services:
+            - receptor
+          servers:
+            lan: (( .properties.diego.consul_server.machines ))
+      loggregator_endpoint:
+        shared_secret: (( external_services.loggregator_endpoint.z1.shared_secret ))
+      metron_agent:
+        zone: (( properties.zone ))
+      network_name: diego1
+      networks:
+        apps: diego1
+      rep:
+        zone: (( properties.zone ))
+      zone: z1
+
+  - name: cell_windows_z2
+    release: diego
+    templates:
+      - name: consul-agent
+      - name: executor
+      - name: garden-windows
+      - name: receptor
+      - name: rep
+      - name: metron_agent
+        release: cf
+    instances: 0
+    resource_pool: large_z2
+    networks:
+      - name: diego2
+    properties:
+      diego:
+        rep:
+          stack: windows
+        executor:
+          garden:
+            address: "/var/vcap/data/garden-windows/garden-windows.sock"
+      consul:
+        agent:
+          services:
+            - receptor
+          servers:
+            lan: (( .properties.diego.consul_server.machines ))
+      loggregator_endpoint:
+        shared_secret: (( external_services.loggregator_endpoint.z2.shared_secret ))
+      metron_agent:
+        zone: (( properties.zone ))
+      network_name: diego2
+      networks:
+        apps: diego2
+      rep:
+        zone: (( properties.zone ))
+      zone: z2
+
   - name: cc_bridge_z1
     release: diego
     templates:
@@ -461,3 +538,4 @@ properties:
         port: (( external_services.nats.port ))
 
     garden-linux: ~
+    garden-windows: ~

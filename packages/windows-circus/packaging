@@ -1,0 +1,2 @@
+set -e
+mv github.com/pivotal-cf-experimental/windows-circus/windows-circus.tgz ${BOSH_INSTALL_TARGET}

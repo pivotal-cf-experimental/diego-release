@@ -11,10 +11,16 @@ networks: (( merge ))
 
 jobs:
   - name: cell_z1
-    instances: 2
+    instances: 1
+
+  - name: cell_windows_z1
+    instances: 1
 
   - name: cell_z2
     instances: 2
+
+  - name: cell_windows_z2
+    instances: 0
 
   - name: etcd_z1
     instances: 1
