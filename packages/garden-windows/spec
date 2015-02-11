@@ -43,3 +43,4 @@ files:
   - github.com/tedsuo/ifrit/ginkgomon/*.go # gosub
   - github.com/gogo/protobuf/proto/*.go
   - github.com/pivotal-golang/lager/*.go
+  - github.com/cloudfoundry-incubator/garden/protocol/*.go
