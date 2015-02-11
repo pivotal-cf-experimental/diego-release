@@ -201,6 +201,8 @@ jobs:
       - name: diego1
     properties:
       diego:
+        rep:
+          stack: windows
         executor:
           garden:
             address: "/var/vcap/data/garden-windows/garden-windows.sock"
@@ -237,6 +239,8 @@ jobs:
       - name: diego2
     properties:
       diego:
+        rep:
+          stack: windows
         executor:
           garden:
             address: "/var/vcap/data/garden-windows/garden-windows.sock"
