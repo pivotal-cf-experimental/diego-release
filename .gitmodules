@@ -224,11 +224,11 @@
 	branch = master
 [submodule "src/github.com/pivotal-cf-experimental/garden-windows"]
 	path = src/github.com/pivotal-cf-experimental/garden-windows
-	url = git@github.com:pivotal-cf-experimental/garden-windows.git
+	url = https://github.com/pivotal-cf-experimental/garden-windows.git
 	branch = master
 [submodule "src/github.com/pivotal-cf-experimental/windows-circus"]
 	path = src/github.com/pivotal-cf-experimental/windows-circus
-	url = git@github.com:pivotal-cf-experimental/windows-circus.git
+	url = https://github.com/pivotal-cf-experimental/windows-circus.git
 	branch = master
 [submodule "src/github.com/hydrogen18/stoppableListener"]
 	path = src/github.com/hydrogen18/stoppableListener
