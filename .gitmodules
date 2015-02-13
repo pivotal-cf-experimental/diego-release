@@ -233,7 +233,7 @@
 	url = git@github.com:pivotal-cf-experimental/garden-windows.git
 	branch = master
 [submodule "src/github.com/pivotal-cf-experimental/windows-circus"]
-	path = src/github.com/pivotal-cf-experimental/windows-circus
+	path = src/github.com/pivotal-cf-experimental/windows_app_lifecycle
 	url = git@github.com:pivotal-cf-experimental/windows-circus.git
 	branch = master
 [submodule "src/github.com/hydrogen18/stoppableListener"]
