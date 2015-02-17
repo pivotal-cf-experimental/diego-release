@@ -5,11 +5,11 @@ dependencies:
   - golang_1.4
 
 files:
-  - github.com/pivotal-cf-experimental/garden-windows/**/*
-  - github.com/pivotal-cf-experimental/garden-windows/*.go # gosub
-  - github.com/pivotal-cf-experimental/garden-windows/backend/*.go # gosub
-  - github.com/pivotal-cf-experimental/garden-windows/container/*.go # gosub
-  - github.com/pivotal-cf-experimental/garden-windows/process/*.go # gosub
+  - github.com/cloudfoundry-incubator/garden-windows/**/*
+  - github.com/cloudfoundry-incubator/garden-windows/*.go # gosub
+  - github.com/cloudfoundry-incubator/garden-windows/backend/*.go # gosub
+  - github.com/cloudfoundry-incubator/garden-windows/container/*.go # gosub
+  - github.com/cloudfoundry-incubator/garden-windows/process/*.go # gosub
   - code.google.com/p/go.net/websocket/*.go # gosub
   - code.google.com/p/gogoprotobuf/proto/*.go # gosub
   - github.com/bmizerany/pat/*.go # gosub

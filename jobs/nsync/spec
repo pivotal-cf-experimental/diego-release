@@ -21,7 +21,7 @@ properties:
     description: 'Map of lifecycle bundles for different stacks in json format {"stack_name":"lifecycle_bundle_path"}'
     default:
       lucid64: buildpack_app_lifecycle/buildpack_app_lifecycle.tgz
-      windows: windows-circus/windows-circus.tgz
+      windows: windows_app_lifecycle/windows_app_lifecycle.tgz
   diego.nsync.docker_lifecycle_bundle:
     description: Lifecycle bundle for docker apps
     default: docker_app_lifecycle/docker_app_lifecycle.tgz

@@ -10,7 +10,7 @@ packages:
   - file_server
   - buildpack_app_lifecycle
   - docker_app_lifecycle
-  - windows-circus
+  - windows_app_lifecycle
 
 properties:
   diego.ssl.skip_cert_verify:
