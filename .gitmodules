@@ -222,14 +222,6 @@
 	path = src/github.com/cloudfoundry-incubator/docker_app_lifecycle
 	url = https://github.com/cloudfoundry-incubator/docker_app_lifecycle
 	branch = master
-[submodule "src/github.com/pivotal-cf-experimental/garden-windows"]
-	path = src/github.com/pivotal-cf-experimental/garden-windows
-	url = https://github.com/pivotal-cf-experimental/garden-windows.git
-	branch = master
-[submodule "src/github.com/pivotal-cf-experimental/windows-circus"]
-	path = src/github.com/pivotal-cf-experimental/windows-circus
-	url = https://github.com/pivotal-cf-experimental/windows-circus.git
-	branch = master
 [submodule "src/github.com/hydrogen18/stoppableListener"]
 	path = src/github.com/hydrogen18/stoppableListener
 	url = https://github.com/hydrogen18/stoppableListener.git
@@ -243,3 +235,9 @@
 [submodule "src/github.com/gogo/protobuf"]
 	path = src/github.com/gogo/protobuf
 	url = https://github.com/gogo/protobuf.git
+[submodule "src/cloudfoundry-incubator/windows_app_lifecycle"]
+	path = src/cloudfoundry-incubator/windows_app_lifecycle
+	url = https://github.com/cloudfoundry-incubator/windows_app_lifecycle.git
+[submodule "src/cloudfoundry-incubator/garden-windows"]
+	path = src/cloudfoundry-incubator/garden-windows
+	url = https://github.com/cloudfoundry-incubator/garden-windows.git
